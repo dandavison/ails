@@ -16,7 +16,7 @@ import * as os from 'os';
 const connection = createConnection(ProposedFeatures.all);
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
-const diagnosticsFile = path.join(os.homedir(), '.ails-diagnostics.json');
+const diagnosticsFile = path.join(os.tmpdir(), 'ails-diagnostics.json');
 const diagnosticsMap = new Map<string, Diagnostic[]>();
 
 interface DiagnosticData {

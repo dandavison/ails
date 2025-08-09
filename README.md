@@ -4,7 +4,7 @@ A VSCode language server that receives diagnostics from external sources via fil
 
 ## Architecture
 
-- **Language Server**: Watches `~/.ails-diagnostics.json` for diagnostic data
+- **Language Server**: Watches temp directory for `ails-diagnostics.json` (cross-platform)
 - **VSCode Extension**: Activates the language server for all files
 - **AI Agents**: Write diagnostic data to the watched file
 
@@ -28,7 +28,7 @@ cd ../extension && npm run compile
 
 ## Usage
 
-AI agents write diagnostics to `~/.ails-diagnostics.json`:
+AI agents write diagnostics to the temp directory (e.g., `/tmp/ails-diagnostics.json` on Linux/macOS, `%TEMP%\ails-diagnostics.json` on Windows):
 
 ```json
 {
@@ -50,3 +50,8 @@ AI agents write diagnostics to `~/.ails-diagnostics.json`:
 Severity levels: `error`, `warning`, `info`, `hint`
 
 The language server automatically detects changes and updates diagnostics in VSCode.
+
+To find your temp directory path:
+- **macOS/Linux**: `echo $TMPDIR` or `/tmp`
+- **Windows**: `echo %TEMP%`
+- **Node.js**: `require('os').tmpdir()`
