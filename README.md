@@ -2,33 +2,17 @@
 
 A language server (LSP) that receives diagnostics from external sources via file watching. Works with VSCode and any LSP-compatible editor.
 
-## Architecture
+## Setup (VSCode)
 
-- **Language Server**: Watches `~/.ails-diagnostics.json` for diagnostic data
-- **VSCode Extension**: Activates the language server for all files
-- **AI Agents**: Write diagnostic data to the watched file
-
-## Setup
-
-1. Install dependencies:
 ```bash
-cd server && npm install
-cd ../extension && npm install
+make
 ```
 
-2. Build:
-```bash
-cd server && npm run compile
-cd ../extension && npm run compile
-```
+and then reload your VSCode windows / restart VSCode.
 
-3. Install extension in VSCode:
-   - Open the `extension` folder in VSCode
-   - Press F5 to launch a new VSCode window with the extension
+### Non-VSCode Users
 
-### For Non-VSCode Users
-
-The language server can run standalone with any LSP-compatible editor:
+The language server can run standalone to be used by any LSP-compatible editor:
 
 1. Build the server:
 ```bash
@@ -44,30 +28,29 @@ node out/server.js --stdio
 
 3. Configure your editor to connect to the language server via stdio. The server watches `~/.ails-diagnostics.json` and provides diagnostics for any file.
 
-Example configurations:
-- **Neovim**: Use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) with a custom server config
-- **Emacs**: Use [lsp-mode](https://github.com/emacs-lsp/lsp-mode) or [eglot](https://github.com/joaotavora/eglot)
-- **Sublime Text**: Use [LSP](https://github.com/sublimelsp/LSP) package
-
 ## Usage
 
 To use ails with your AI coding assistant:
 
-1. Make sure the ails extension is installed and active in VSCode
-2. Copy the prompt below and paste it into your AI assistant (Claude, ChatGPT, Cursor, etc.)
-3. Ask the AI to "lint", "review", or "analyze" your code
-4. Diagnostics will appear as squiggles in your editor
+1. Copy the prompt below and paste it into your AI assistant (Claude, ChatGPT, Cursor, etc.)
+2. Ask your AI agent to "lint", "review", or "analyze" your code.
+3. Diagnostics will appear as squiggles in your editor
+
+Of course, you can ask your agent to do things that linters normally don't, such as to compare the
+current code version with a previous version in git history and alert you to any
+backwards-incompatible changes.
 
 ### Agent Setup Prompt
 
 Copy this prompt to your AI assistant:
 
 ```
-I have the ails (AI Language Server) extension installed in VSCode. When I ask you to lint, review, or analyze my code, please write your findings as JSON to my diagnostics file.
-
-Write diagnostics to: ~/.ails-diagnostics.json
+I have the ails (AI Language Server) extension installed.
+When I ask you to lint, review, or analyze my code, please write your findings as JSON to ~/.ails-diagnostics.json.
+Assume that the code passes a conventional linter and type-checker; your job is to identify incorrectness that would likely not have been flagged by such tools.
 
 Use this exact JSON format:
+
 {
   "file": "<absolute_path_to_file>",
   "diagnostics": [
