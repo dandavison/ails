@@ -18,6 +18,12 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "ails.clearDiagnostics",
+        "title": "AILS: Clear Diagnostics for Current File"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "AILS",

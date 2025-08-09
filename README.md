@@ -93,3 +93,7 @@ Once you've given this prompt to your AI assistant, it will remember these instr
 - Blue squiggles for info/hints
 
 The diagnostics update in real-time whenever the AI writes new analysis results.
+
+### VSCode Commands
+
+- `AILS: Clear Diagnostics for Current File` - remove all diagnostics from the active file.
