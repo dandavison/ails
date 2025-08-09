@@ -28,6 +28,12 @@ node out/server.js --stdio
 
 3. Configure your editor to connect to the language server via stdio. The server watches `~/.ails-diagnostics.json` and provides diagnostics for any file.
 
+Example configurations:
+- **IntelliJ IDEA**: Use [LSP4IJ plugin](https://plugins.jetbrains.com/plugin/23257-lsp4ij) or [intellij-lsp-plugin](https://github.com/lsp4intellij/intellij-lsp-plugin)
+- **Neovim**: Use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) with a custom server config
+- **Emacs**: Use [lsp-mode](https://github.com/emacs-lsp/lsp-mode) or [eglot](https://github.com/joaotavora/eglot)
+- **Sublime Text**: Use [LSP](https://github.com/sublimelsp/LSP) package
+
 ## Usage
 
 To use ails with your AI coding assistant:
