@@ -31,18 +31,31 @@ cd ../extension && npm run compile
 To use ails with your AI coding assistant:
 
 1. Make sure the ails extension is installed and active in VSCode
-2. Copy the prompt below and paste it into your AI assistant (Claude, ChatGPT, Cursor, etc.)
-3. Ask the AI to "lint", "review", or "analyze" your code
-4. Diagnostics will appear as squiggles in your editor
+2. Find your temp directory (see Step 1 below)
+3. Customize the agent prompt with your temp directory path
+4. Paste the customized prompt into your AI assistant
+5. Ask the AI to "lint", "review", or "analyze" your code
+6. Diagnostics will appear as squiggles in your editor
 
-### Agent Setup Prompt
+### Step 1: Find Your Temp Directory
+
+Run one of these commands in your terminal:
+- **macOS/Linux**: `echo $TMPDIR` (or use `/tmp`)
+- **Windows**: `echo %TEMP%`
+
+### Step 2: Copy Agent Setup Prompt
+
+Replace `<YOUR_TEMP_DIR>` with your actual path from step 1. For example:
+- macOS: `/var/folders/d2/hflhkhsd08v8nbjf3jf9yfdm0000gn/T`
+- Linux: `/tmp`
+- Windows: `C:\Users\YourName\AppData\Local\Temp`
+
+Then copy this customized prompt to your AI assistant:
 
 ```
-I have the ails (AI Language Server) extension installed in VSCode. When I ask you to lint, review, or analyze my code, please write your findings as JSON to my temp directory diagnostics file.
+I have the ails (AI Language Server) extension installed in VSCode. When I ask you to lint, review, or analyze my code, please write your findings as JSON to my diagnostics file.
 
-To provide diagnostics:
-1. Determine the temp directory using: require('os').tmpdir()
-2. Write to: <temp_dir>/ails-diagnostics.json
+Write diagnostics to: <YOUR_TEMP_DIR>/ails-diagnostics.json
 
 Use this exact JSON format:
 {
@@ -69,6 +82,15 @@ Example diagnostics:
 Line and column numbers are 1-based. Include endLine/endColumn for multi-line issues.
 
 When I ask you to "lint", "review", or "analyze" my code, write appropriate diagnostics to the JSON file and tell me you've done so. The diagnostics will appear as squiggles in my editor.
+```
+
+**Example customized prompt** (for Linux/macOS using `/tmp`):
+```
+I have the ails (AI Language Server) extension installed in VSCode. When I ask you to lint, review, or analyze my code, please write your findings as JSON to my diagnostics file.
+
+Write diagnostics to: /tmp/ails-diagnostics.json
+
+[... rest of the prompt ...]
 ```
 
 ### After Setup
