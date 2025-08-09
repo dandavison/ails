@@ -8,3 +8,4 @@ install:
 clean:
 	cd extension && $(MAKE) clean
 	cd server && rm -rf out/
+
