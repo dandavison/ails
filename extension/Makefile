@@ -10,6 +10,7 @@ build:
 	cd ../server && npm run compile
 	mkdir -p server
 	cp ../server/out/server.js server/
+	cp -r ../server/node_modules server/
 	yes | npx vsce package
 
 uninstall:

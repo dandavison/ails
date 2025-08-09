@@ -1,0 +1,10 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+tsconfig.json
+.eslintrc.json
+**/*.map
+**/*.ts
+Makefile
+# Don't exclude server directory - it contains needed dependencies
