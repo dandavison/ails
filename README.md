@@ -55,3 +55,41 @@ To find your temp directory path:
 - **macOS/Linux**: `echo $TMPDIR` or `/tmp`
 - **Windows**: `echo %TEMP%`
 - **Node.js**: `require('os').tmpdir()`
+
+## Agent Instructions
+
+Copy and paste this prompt to any AI coding assistant to enable ails integration:
+
+```
+I have the ails (AI Language Server) extension installed in VSCode. When I ask you to lint, review, or analyze my code, please write your findings as JSON to my temp directory diagnostics file.
+
+To provide diagnostics:
+1. Determine the temp directory using: require('os').tmpdir()
+2. Write to: <temp_dir>/ails-diagnostics.json
+
+Use this exact JSON format:
+{
+  "file": "<absolute_path_to_file>",
+  "diagnostics": [
+    {
+      "line": <line_number>,
+      "column": <column_number>,
+      "endLine": <optional_end_line>,
+      "endColumn": <optional_end_column>,
+      "severity": "<error|warning|info|hint>",
+      "message": "<diagnostic_message>",
+      "code": "<optional_diagnostic_code>"
+    }
+  ]
+}
+
+Example diagnostics:
+- "severity": "error" - Syntax errors, undefined variables, type errors
+- "severity": "warning" - Potential bugs, deprecated usage, missing error handling
+- "severity": "info" - Style suggestions, refactoring opportunities
+- "severity": "hint" - Minor suggestions, alternative approaches
+
+Line and column numbers are 1-based. Include endLine/endColumn for multi-line issues.
+
+When I ask you to "lint", "review", or "analyze" my code, write appropriate diagnostics to the JSON file and tell me you've done so. The diagnostics will appear as squiggles in my editor.
+```
