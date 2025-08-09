@@ -8,3 +8,4 @@ tsconfig.json
 **/*.ts
 Makefile
 # Don't exclude server directory - it contains needed dependencies
+
