@@ -3,6 +3,7 @@
   "displayName": "AI Language Server",
   "description": "Language server that receives diagnostics from external sources",
   "version": "0.1.0",
+  "publisher": "dandavison",
   "engines": {
     "vscode": "^1.75.0"
   },
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@types/vscode": "^1.75.0",
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "@vscode/vsce": "^2.22.0"
   }
 }

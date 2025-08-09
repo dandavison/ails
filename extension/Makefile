@@ -6,7 +6,8 @@ clean:
 	@rm *.vsix 2>/dev/null || true
 
 build:
-	yes | vsce package
+	npm run compile
+	yes | npx vsce package
 
 uninstall:
 	code --uninstall-extension dandavison.ails || true
