@@ -28,37 +28,14 @@ cd ../extension && npm run compile
 
 ## Usage
 
-AI agents write diagnostics to the temp directory (e.g., `/tmp/ails-diagnostics.json` on Linux/macOS, `%TEMP%\ails-diagnostics.json` on Windows):
+To use ails with your AI coding assistant:
 
-```json
-{
-  "file": "/absolute/path/to/file.ts",
-  "diagnostics": [
-    {
-      "line": 42,
-      "column": 10,
-      "endLine": 42,
-      "endColumn": 25,
-      "severity": "warning",
-      "message": "Consider using a more descriptive variable name",
-      "code": "AI001"
-    }
-  ]
-}
-```
+1. Make sure the ails extension is installed and active in VSCode
+2. Copy the prompt below and paste it into your AI assistant (Claude, ChatGPT, Cursor, etc.)
+3. Ask the AI to "lint", "review", or "analyze" your code
+4. Diagnostics will appear as squiggles in your editor
 
-Severity levels: `error`, `warning`, `info`, `hint`
-
-The language server automatically detects changes and updates diagnostics in VSCode.
-
-To find your temp directory path:
-- **macOS/Linux**: `echo $TMPDIR` or `/tmp`
-- **Windows**: `echo %TEMP%`
-- **Node.js**: `require('os').tmpdir()`
-
-## Agent Instructions
-
-Copy and paste this prompt to any AI coding assistant to enable ails integration:
+### Agent Setup Prompt
 
 ```
 I have the ails (AI Language Server) extension installed in VSCode. When I ask you to lint, review, or analyze my code, please write your findings as JSON to my temp directory diagnostics file.
@@ -93,3 +70,12 @@ Line and column numbers are 1-based. Include endLine/endColumn for multi-line is
 
 When I ask you to "lint", "review", or "analyze" my code, write appropriate diagnostics to the JSON file and tell me you've done so. The diagnostics will appear as squiggles in my editor.
 ```
+
+### After Setup
+
+Once you've given this prompt to your AI assistant, it will remember these instructions for your entire conversation. Simply ask it to "lint" or "review" any file, and diagnostics will automatically appear in VSCode as:
+- Red squiggles for errors
+- Yellow squiggles for warnings  
+- Blue squiggles for info/hints
+
+The diagnostics update in real-time whenever the AI writes new analysis results.
