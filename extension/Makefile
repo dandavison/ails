@@ -10,7 +10,7 @@ build:
 	cd ../server && npm run compile
 	mkdir -p server
 	cp ../server/out/server.js server/
-	npx vsce package --no-dependencies
+	yes | npx vsce package
 
 uninstall:
 	code --uninstall-extension dandavison.ails || true

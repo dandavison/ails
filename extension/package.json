@@ -4,11 +4,6 @@
   "description": "Language server that receives diagnostics from external sources",
   "version": "0.1.0",
   "publisher": "dandavison",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dandavison/ails"
-  },
-  "license": "MIT",
   "engines": {
     "vscode": "^1.75.0"
   },
