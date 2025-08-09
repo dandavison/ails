@@ -3,10 +3,13 @@ install: clean build uninstall
 	code --list-extensions --show-versions | grep ails
 
 clean:
-	@rm *.vsix 2>/dev/null || true
+	@rm -rf *.vsix server/ 2>/dev/null || true
 
 build:
 	npm run compile
+	cd ../server && npm run compile
+	mkdir -p server
+	cp ../server/out/server.js server/
 	yes | npx vsce package
 
 uninstall:
