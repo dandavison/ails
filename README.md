@@ -2,7 +2,9 @@
 
 A language server (LSP) that receives diagnostics from external sources via file watching. Works with VSCode and any LSP-compatible editor.
 
-## Setup (VSCode)
+## Setup
+
+### VSCode
 
 ```bash
 make
@@ -10,7 +12,7 @@ make
 
 and then reload your VSCode windows / restart VSCode.
 
-### Non-VSCode Users
+### Non-VSCode
 
 The language server can run standalone to be used by any LSP-compatible editor:
 
@@ -29,7 +31,7 @@ node out/server.js --stdio
 3. Configure your editor to connect to the language server via stdio. The server watches `~/.ails-diagnostics.json` and provides diagnostics for any file.
 
 Example configurations:
-- **IntelliJ IDEA**: Use [LSP4IJ plugin](https://plugins.jetbrains.com/plugin/23257-lsp4ij) or [intellij-lsp-plugin](https://github.com/lsp4intellij/intellij-lsp-plugin)
+- **IntelliJ IDEA**: Install [LSP4IJ plugin](https://plugins.jetbrains.com/plugin/23257-lsp4ij) or [intellij-lsp-plugin](https://github.com/lsp4intellij/intellij-lsp-plugin) (IntelliJ requires a plugin for LSP support)
 - **Neovim**: Use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) with a custom server config
 - **Emacs**: Use [lsp-mode](https://github.com/emacs-lsp/lsp-mode) or [eglot](https://github.com/joaotavora/eglot)
 - **Sublime Text**: Use [LSP](https://github.com/sublimelsp/LSP) package
